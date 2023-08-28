@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { Link } from "react-router-dom";
 
 export const HomeSlider = () => {
   return (
@@ -26,9 +27,12 @@ export const HomeSlider = () => {
             <span className="text-3xl sm:text-5xl lg:text-6xl xl:text-8xl group-hover:text-orange-400 ease-in-out duration-300 ">
               ¡Welcome to Coff Shop!
             </span>
-            <button className="absolute text-sm md:text-2xl py-1 px-5 md:py-3 md:px-9 rounded-lg font-bold bg-white text-black bottom-3 hover:bg-orange-200">
+            <Link
+              to={"/shop-all"}
+              className="absolute text-sm md:text-2xl py-1 px-5 md:py-3 md:px-9 rounded-lg font-bold bg-white text-black bottom-3 hover:bg-orange-200"
+            >
               SHOP
-            </button>
+            </Link>
           </span>
           <img
             className="w-auto h-auto object-center"
@@ -41,9 +45,12 @@ export const HomeSlider = () => {
             <span className="text-3xl sm:text-5xl lg:text-6xl xl:text-8xl group-hover:text-orange-400 ease-in-out duration-300 underline">
               Selected Coffee Beans
             </span>
-            <button className="absolute text-sm md:text-2xl py-1 px-5 md:py-3 md:px-9 rounded-lg font-bold bg-white text-black bottom-3 hover:bg-orange-200">
+            <Link
+              to={"/shop-all"}
+              className="absolute text-sm md:text-2xl py-1 px-5 md:py-3 md:px-9 rounded-lg font-bold bg-white text-black bottom-3 hover:bg-orange-200"
+            >
               SHOP
-            </button>
+            </Link>
           </span>
           <img className="object-cover" src="/wallpaper/wall3.jpg" alt="" />
         </SwiperSlide>
@@ -52,9 +59,12 @@ export const HomeSlider = () => {
             <span className="text-3xl sm:text-5xl lg:text-6xl xl:text-8xl group-hover:text-orange-400 ease-in-out duration-300 uppercase underline">
               Premium Brands
             </span>
-            <button className="absolute text-sm md:text-2xl py-1 px-5 md:py-3 md:px-9 rounded-lg font-bold bg-white text-black bottom-3 hover:bg-orange-200">
+            <Link
+              to={"/shop-all"}
+              className="absolute text-sm md:text-2xl py-1 px-5 md:py-3 md:px-9 rounded-lg font-bold bg-white text-black bottom-3 hover:bg-orange-200"
+            >
               SHOP
-            </button>
+            </Link>
           </span>
           <img className="object-cover" src="/wallpaper/wall2.jpg" alt="" />
         </SwiperSlide>
@@ -63,9 +73,12 @@ export const HomeSlider = () => {
             <span className="text-3xl sm:text-5xl lg:text-6xl xl:text-8xl group-hover:text-orange-400 ease-in-out duration-300 uppercase underline">
               Arabian Coffee Beans
             </span>
-            <button className="absolute text-sm md:text-2xl py-1 px-5 md:py-3 md:px-9 rounded-lg font-bold bg-white text-black bottom-3 hover:bg-orange-200">
+            <Link
+              to={"/shop-all"}
+              className="absolute text-sm md:text-2xl py-1 px-5 md:py-3 md:px-9 rounded-lg font-bold bg-white text-black bottom-3 hover:bg-orange-200"
+            >
               SHOP
-            </button>
+            </Link>
           </span>
           <img
             className="w-full h-auto object-cover"

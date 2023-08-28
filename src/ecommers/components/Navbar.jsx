@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -27,7 +28,10 @@ export const Navbar = () => {
                   d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
                 />
               </svg>
-              <div className="group flex items-center w-auto text-white font-bold bg-black p-1 rounded-md gap-1 px-2 cursor-pointer hover:bg-orange-600">
+              <Link
+                to={"/shop-all"}
+                className="group flex items-center w-auto text-white font-bold bg-black p-1 rounded-md gap-1 px-2 cursor-pointer hover:bg-orange-600 "
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -45,11 +49,14 @@ export const Navbar = () => {
                 <h2 className="text-md md:text-2xl  group-hover:animate-pulse group-hover:animate-infinite group-hover:animate-duration-[800ms] group-hover:animate-delay-100">
                   SHOP
                 </h2>
-              </div>
+              </Link>
             </div>
-            <h2 className="hidden sm:flex text-2xl sm:text-5xl items-center font-bold cursor-pointer hover:animate-pulse hover:animate-infinite text-orange-400">
+            <Link
+              to={"/"}
+              className="hidden sm:flex text-2xl sm:text-5xl items-center font-bold cursor-pointer hover:animate-pulse hover:animate-infinite text-orange-400"
+            >
               Coff Shop
-            </h2>
+            </Link>
             <div className="flex gap-1 md:gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -137,24 +144,53 @@ export const Navbar = () => {
             d="M6 18L18 6M6 6l12 12"
           />
         </svg>
-        <h1 className="text-5xl font-bold cursor-pointer text-start mt-16 mx-5 m-2">
+        <Link
+          to={"/"}
+          className="text-5xl font-bold cursor-pointer text-start mt-16 mx-5 m-2"
+        >
           Coff Shop
-        </h1>
+        </Link>
         <ul className="flex flex-col justify-start mx-5 font-normal text-3xl ">
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
-            <img className="w-10 mr-2" src="/icons/avatar.png" alt="" />
-            Login
+            <Link
+              to={"/"}
+              className="flex items-center gap-2 p-1 hover:underline cursor-pointer"
+            >
+              <img className="w-10 mr-2" src="/icons/icon4.png" alt="" /> Home
+            </Link>
           </li>
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
-            <img className="w-10 mr-2" src="/icons/icon1.png" alt="" /> Shop All
+            <Link className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
+              <img className="w-10 mr-2" src="/icons/avatar.png" alt="" />
+              Login
+            </Link>
           </li>
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
-            <img className="w-10 mr-2" src="/icons/icon5.png" alt="" /> Coffee &
-            Packs
+            <Link
+              to={"/shop-all"}
+              className="flex items-center gap-2 p-1 hover:underline cursor-pointer"
+            >
+              <img className="w-10 mr-2" src="/icons/icon1.png" alt="" /> Shop
+              All
+            </Link>
           </li>
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
-            <img className="w-10 mr-2" src="/icons/icon3.png" alt="" /> Coffee
-            Cup
+            <Link
+              to={"/shop-packs"}
+              className="flex items-center gap-2 p-1 hover:underline cursor-pointer"
+            >
+              <img className="w-10 mr-2" src="/icons/icon5.png" alt="" /> Coffee
+              Packs
+            </Link>
+          </li>
+          <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
+            <Link
+              to={"/shop-cups"}
+              className="flex items-center gap-2 p-1 hover:underline cursor-pointer"
+            >
+              <img className="w-10 mr-2" src="/icons/icon3.png" alt="" /> Coffee
+              Cups
+            </Link>
           </li>
         </ul>
       </div>

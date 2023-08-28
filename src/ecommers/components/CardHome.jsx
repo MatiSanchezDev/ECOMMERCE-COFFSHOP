@@ -6,7 +6,7 @@ export const CardHome = () => {
   console.log();
   return (
     <>
-      <h2 className="text-center text-5xl md:text-6xl pt-6 font-black">
+      <h2 className="text-center text-5xl md:text-6xl pt-24 font-black">
         TRENDING
       </h2>
       <div className="flex flex-row flex-wrap justify-center items-start content-center gap-4 my-6">
@@ -18,10 +18,7 @@ export const CardHome = () => {
             <div
               className={`${cup.bg} w-full h-80 absolute z-0 top-[-100%] group-hover:top-0 left-0 rounded-md ease-in-out duration-300`}
             ></div>
-            <Link
-              to={`/product/${cup.name}/${cup.id}`}
-              className="w-full h-[300px] z-0 "
-            >
+            <Link to={`/product/${cup.name}`} className="w-full h-[300px] z-0 ">
               <img
                 className="object-contain w-full h-full "
                 src={cup.img}

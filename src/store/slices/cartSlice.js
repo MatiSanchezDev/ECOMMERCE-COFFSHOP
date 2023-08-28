@@ -1,13 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const DEFAULT_STATE = [
-  {
-    id: "1",
-    name: "Matias N. Sanchez",
-    email: "sanchezmatidev@gmail.com",
-    github: "MatiSanchezDev",
-  },
-];
+const DEFAULT_STATE = {
+  cart: [{ id: "1", name: "holis" }],
+};
 
 const initialState = (() => {
   const persistedState = localStorage.getItem("__redux__state__");
@@ -18,10 +13,14 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState: initialState,
   reducers: {
-    increment: (state /* action */) => {
-      state.counter += 1;
+    addCart: (state, { payload }) => {
+      state.cart = state.cart.push(payload);
+    },
+    editCart: (state, { payload }) => {
+      const findCart = state.cart.find((cart) => cart.id === payload);
+      console.log(findCart);
     },
   },
 });
 
-export const { increment } = cartSlice.actions;
+export const { addCart, editCart } = cartSlice.actions;
