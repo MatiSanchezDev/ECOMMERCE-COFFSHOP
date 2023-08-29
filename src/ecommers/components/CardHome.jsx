@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useProducts } from "../hooks/useProducts";
+import { useCart } from "../hooks/useCart";
+import { Toaster } from "sonner";
 
 export const CardHome = () => {
   const { cupProduct } = useProducts();
-  console.log();
+  const { handleAddCart } = useCart();
   return (
     <>
       <h2 className="text-center text-5xl md:text-6xl pt-24 font-black">
@@ -36,7 +38,13 @@ export const CardHome = () => {
               </p>
             </div>
             <div className="flex items-end justify-end w-full">
-              <button className="w-full bg-black p-2 text-white text-xl rounded-md hover:bg-gray-500">
+              <Toaster position="top-center" expand={false} />
+              <button
+                onClick={() => {
+                  handleAddCart(cup);
+                }}
+                className="w-full bg-black p-2 text-white text-xl rounded-md hover:border hover:border-black/10 hover:bg-orange-200 hover:text-black"
+              >
                 ADD TO CART
               </button>
             </div>

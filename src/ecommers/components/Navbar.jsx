@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../hooks/useCart";
 
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [search, setSearch] = useState(false);
-  const [cart, setCart] = useState(false);
+  const {
+    cart,
+    handleDelCart,
+    handleAddCount,
+    handleDelCount,
+    cartOpen,
+    setCartOpen,
+  } = useCart();
 
   return (
     <main className="flex flex-col justify-center items-center">
@@ -88,11 +96,11 @@ export const Navbar = () => {
                 />
               </svg>
               <div
-                onClick={() => setCart(!cart)}
+                onClick={() => setCartOpen(!cartOpen)}
                 className="relative group hover:cursor-pointer"
               >
                 <span className="absolute right-[-15%] text-[10px] font-bold text-white bg-black rounded-full w-auto h-4 overflow-hidden text-center flex justify-center items-center p-[6px] cursor-pointer group-hover:bg-orange-600">
-                  0
+                  {cart ? cart.length : 0}
                 </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +124,7 @@ export const Navbar = () => {
       {/* Sidebar */}
       <label
         onClick={() => {
-          setCart(false);
+          setCartOpen(false);
           setNav(false);
           setSearch(false);
         }}
@@ -197,7 +205,7 @@ export const Navbar = () => {
       {/* Search */}
       <label
         onClick={() => {
-          setCart(false);
+          setCartOpen(false);
           setNav(false);
           setSearch(false);
         }}
@@ -251,22 +259,22 @@ export const Navbar = () => {
       {/* Cart */}
       <label
         onClick={() => {
-          setCart(false);
+          setCartOpen(false);
           setNav(false);
           setSearch(false);
         }}
         className={
-          !cart ? "" : "fixed top-0 z-20 w-screen h-screen bg-black/40"
+          !cartOpen ? "" : "fixed top-0 z-20 w-screen h-screen bg-black/40"
         }
       ></label>
       <div
         className={
-          cart
-            ? "fixed w-96 h-screen bg-orange-300 z-30 top-0 right-0 flex justify-start flex-col p-5 shadow-2xl"
+          cartOpen
+            ? "fixed w-96 h-screen bg-white z-30 top-0 right-0 flex justify-start flex-col p-4 shadow-2xl"
             : "hidden"
         }
       >
-        <h1 className="text-4xl text-center font-bold cursor-pointer py-2">
+        <h1 className="text-4xl text-center font-black cursor-pointer py-2 uppercase tracking-wide">
           Cart
         </h1>
         <svg
@@ -276,7 +284,7 @@ export const Navbar = () => {
           strokeWidth={1.5}
           stroke="currentColor"
           className="w-9 h-9 absolute top-7 right-5 hover:text-orange-600"
-          onClick={() => setCart(!cart)}
+          onClick={() => setCartOpen(!cartOpen)}
         >
           <path
             strokeLinecap="round"
@@ -284,22 +292,90 @@ export const Navbar = () => {
             d="M6 18L18 6M6 6l12 12"
           />
         </svg>
-        <div className="w-full h-[700px] overflow-auto m-4">
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
-          <div className="bg-black w-80 h-28 my-1">p</div>
+        <div className="w-full h-[700px] overflow-auto overflow-x-hidden p-1 rounded-lg">
+          <div
+            className={
+              cart.length === 0
+                ? "w-full h-full flex justify-center items-center bg-orange-200/40 text-3xl uppercase"
+                : "hidden"
+            }
+          >
+            Empty Cart
+          </div>
+          {cart?.map((cart) => (
+            <div
+              key={cart.id}
+              className="relative w-80 h-28 m-2 ml-3 bg-orange-200/30 rounded-md flex flex-row shadow-[0_2px_6px_1px_rgba(0,0,0,0.3)] border hover:border-black/30 "
+            >
+              <span className="absolute top-11 left-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 hover:bg-orange-200 rounded-md cursor-pointer"
+                  onClick={() => handleDelCart(cart.name)}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </span>
+              <div className="absolute top-10 right-3 w-auto h-6 px-2 pt-[2px] flex justify-center items-center rounded-lg bg-black text-white">
+                {cart.count}
+              </div>
+              <div className="w-1/2 h-full overflow-hidden py-2">
+                <img
+                  className="w-full h-full object-contain "
+                  src={cart.img}
+                  alt={cart.name}
+                />
+              </div>
+              <div className="pt-3 w-1/2 pr-6 flex flex-col items-start">
+                <div className="overflow-hidden h-5">
+                  <h4 className="text-center text-md">
+                    {cart.name.substring(0, 20)}...
+                  </h4>
+                </div>
+                <div className="flex justify-center items-center gap-2">
+                  <span className="flex justify-center items-center text-md pt-2 pb-1">
+                    Price:
+                  </span>
+                  <span className="flex justify-center items-center text-lg pt-2 pb-1">
+                    ${cart.price}
+                  </span>
+                </div>
+                <div className="bg-black text-white w-full rounded-md p-1 flex justify-center items-center gap-7">
+                  <button
+                    disabled={false}
+                    onClick={() => {
+                      handleDelCount(cart);
+                    }}
+                    className="w-full hover:bg-orange-200 hover:text-black rounded-md"
+                  >
+                    -
+                  </button>
+                  <button
+                    onClick={() => {
+                      handleAddCount(cart);
+                    }}
+                    className="w-full hover:bg-orange-200 hover:text-black rounded-md"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        <button className="text-white text-lg font-bold w-full bg-black h-12 rounded-lg">
+        <div className="text-center mb-3 flex justify-between items-center px-5 pt-5">
+          <span className="uppercase text-3xl">Total:</span>
+          <span className="text-4xl">$12000</span>
+        </div>
+        <button className="text-white text-lg font-bold w-full bg-black h-12 rounded-lg shadow-[0_2px_9px_1px_rgba(0,0,0,0.3)] hover:border hover:border-black hover:bg-orange-200 hover:text-black">
           CHETKOUT
         </button>
       </div>

@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const DEFAULT_STATE = {
-  cart: [{ id: "1", name: "holis" }],
-};
+const DEFAULT_STATE = [];
 
 const initialState = (() => {
   const persistedState = localStorage.getItem("__redux__state__");
@@ -14,13 +12,29 @@ export const cartSlice = createSlice({
   initialState: initialState,
   reducers: {
     addCart: (state, { payload }) => {
-      state.cart = state.cart.push(payload);
+      const findProduct = state.find((coffe) => coffe.name === payload.name);
+      if (findProduct === undefined) {
+        state.push(payload);
+      } else {
+        findProduct.count++;
+      }
     },
-    editCart: (state, { payload }) => {
-      const findCart = state.cart.find((cart) => cart.id === payload);
-      console.log(findCart);
+    delCart: (state, { payload }) => {
+      return state.filter((cart) => cart.name !== payload);
+    },
+    addCount: (state, { payload }) => {
+      const findProduct = state.find((coffe) => coffe.name === payload.name);
+      if (findProduct.count < findProduct.stock) {
+        findProduct.count++;
+      }
+    },
+    delCount: (state, { payload }) => {
+      const findProduct = state.find((coffe) => coffe.name === payload.name);
+      if (findProduct.count > 1) {
+        findProduct.count--;
+      }
     },
   },
 });
 
-export const { addCart, editCart } = cartSlice.actions;
+export const { addCart, delCart, addCount, delCount } = cartSlice.actions;

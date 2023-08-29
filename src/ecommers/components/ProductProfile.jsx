@@ -50,7 +50,9 @@ export const ProductProfile = () => {
           </p>
           <div className="w-full h-12 flex justify-center items-center my-6">
             <div className="w-80 h-auto bg-black flex justify-center text-white rounded-xl items-center gap-6 text-2xl py-1">
-              <button className="w-10 hover:bg-orange-600 rounded-lg">-</button>
+              <button disabled className="w-10 hover:bg-orange-600 rounded-lg">
+                -
+              </button>
               <button className="w-28 h-auto uppercase hover:bg-orange-600 rounded-lg py-1">
                 Add Cart
               </button>

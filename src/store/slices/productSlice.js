@@ -10,6 +10,7 @@ const product = [
     description:
       "Our cupfuls of coffee are an invitation to savor the passion and dedication we pour into every preparation. Each coffee cup is an experience in itself, with every step of the brewing process carefully controlled to ensure maximum freshness and flavor. From the perfect grind to the expert pour, our hands work in harmony to offer you a cup of coffee that surpasses your expectations.",
     stock: 30,
+    count: 1,
   },
   {
     id: "2",
@@ -19,7 +20,8 @@ const product = [
     bg: "bg-yellow-200",
     description:
       "Our cupfuls of coffee are an invitation to savor the passion and dedication we pour into every preparation. Each coffee cup is an experience in itself, with every step of the brewing process carefully controlled to ensure maximum freshness and flavor. From the perfect grind to the expert pour, our hands work in harmony to offer you a cup of coffee that surpasses your expectations.",
-    stock: 30,
+    stock: 15,
+    count: 1,
   },
   {
     id: "3",
@@ -29,7 +31,8 @@ const product = [
     bg: "bg-orange-800/70",
     description:
       "Our cupfuls of coffee are an invitation to savor the passion and dedication we pour into every preparation. Each coffee cup is an experience in itself, with every step of the brewing process carefully controlled to ensure maximum freshness and flavor. From the perfect grind to the expert pour, our hands work in harmony to offer you a cup of coffee that surpasses your expectations.",
-    stock: 30,
+    stock: 18,
+    count: 1,
   },
   {
     id: "4",
@@ -40,6 +43,7 @@ const product = [
     description:
       "Our cupfuls of coffee are an invitation to savor the passion and dedication we pour into every preparation. Each coffee cup is an experience in itself, with every step of the brewing process carefully controlled to ensure maximum freshness and flavor. From the perfect grind to the expert pour, our hands work in harmony to offer you a cup of coffee that surpasses your expectations.",
     stock: 30,
+    count: 1,
   },
   {
     id: "5",
@@ -50,6 +54,7 @@ const product = [
     description:
       "Our cupfuls of coffee are an invitation to savor the passion and dedication we pour into every preparation. Each coffee cup is an experience in itself, with every step of the brewing process carefully controlled to ensure maximum freshness and flavor. From the perfect grind to the expert pour, our hands work in harmony to offer you a cup of coffee that surpasses your expectations.",
     stock: 30,
+    count: 1,
   },
   {
     id: "6",
@@ -60,6 +65,7 @@ const product = [
     description:
       "Our cupfuls of coffee are an invitation to savor the passion and dedication we pour into every preparation. Each coffee cup is an experience in itself, with every step of the brewing process carefully controlled to ensure maximum freshness and flavor. From the perfect grind to the expert pour, our hands work in harmony to offer you a cup of coffee that surpasses your expectations.",
     stock: 30,
+    count: 1,
   },
   {
     id: "7",
@@ -70,6 +76,7 @@ const product = [
     description:
       "Our cupfuls of coffee are an invitation to savor the passion and dedication we pour into every preparation. Each coffee cup is an experience in itself, with every step of the brewing process carefully controlled to ensure maximum freshness and flavor. From the perfect grind to the expert pour, our hands work in harmony to offer you a cup of coffee that surpasses your expectations.",
     stock: 30,
+    count: 1,
   },
 ];
 

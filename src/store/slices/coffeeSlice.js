@@ -10,6 +10,7 @@ const coffee = [
     description:
       "At Coff Shop, we take pride in offering you a premium selection of coffee beans sourced from the finest coffee regions around the world. Each coffee package is a carefully crafted masterpiece, capturing the essence of its origin and the dedicated work of the farmers. From soft and fruity tones to rich and bold flavors, our range of tastes will take you on a sensory journey through diverse notes and nuances.",
     stock: 15,
+    count: 1,
   },
   {
     id: "2",
@@ -20,6 +21,7 @@ const coffee = [
     description:
       "At Coff Shop, we take pride in offering you a premium selection of coffee beans sourced from the finest coffee regions around the world. Each coffee package is a carefully crafted masterpiece, capturing the essence of its origin and the dedicated work of the farmers. From soft and fruity tones to rich and bold flavors, our range of tastes will take you on a sensory journey through diverse notes and nuances.",
     stock: 5,
+    count: 1,
   },
   {
     id: "3",
@@ -30,6 +32,7 @@ const coffee = [
     description:
       "At Coff Shop, we take pride in offering you a premium selection of coffee beans sourced from the finest coffee regions around the world. Each coffee package is a carefully crafted masterpiece, capturing the essence of its origin and the dedicated work of the farmers. From soft and fruity tones to rich and bold flavors, our range of tastes will take you on a sensory journey through diverse notes and nuances.",
     stock: 19,
+    count: 1,
   },
   {
     id: "4",
@@ -40,6 +43,7 @@ const coffee = [
     description:
       "At Coff Shop, we take pride in offering you a premium selection of coffee beans sourced from the finest coffee regions around the world. Each coffee package is a carefully crafted masterpiece, capturing the essence of its origin and the dedicated work of the farmers. From soft and fruity tones to rich and bold flavors, our range of tastes will take you on a sensory journey through diverse notes and nuances.",
     stock: 17,
+    count: 1,
   },
   {
     id: "5",
@@ -50,6 +54,7 @@ const coffee = [
     description:
       "At Coff Shop, we take pride in offering you a premium selection of coffee beans sourced from the finest coffee regions around the world. Each coffee package is a carefully crafted masterpiece, capturing the essence of its origin and the dedicated work of the farmers. From soft and fruity tones to rich and bold flavors, our range of tastes will take you on a sensory journey through diverse notes and nuances.",
     stock: 15,
+    count: 1,
   },
   {
     id: "6",
@@ -60,6 +65,7 @@ const coffee = [
     description:
       "At Coff Shop, we take pride in offering you a premium selection of coffee beans sourced from the finest coffee regions around the world. Each coffee package is a carefully crafted masterpiece, capturing the essence of its origin and the dedicated work of the farmers. From soft and fruity tones to rich and bold flavors, our range of tastes will take you on a sensory journey through diverse notes and nuances.",
     stock: 5,
+    count: 1,
   },
   {
     id: "7",
@@ -70,6 +76,7 @@ const coffee = [
     description:
       "At Coff Shop, we take pride in offering you a premium selection of coffee beans sourced from the finest coffee regions around the world. Each coffee package is a carefully crafted masterpiece, capturing the essence of its origin and the dedicated work of the farmers. From soft and fruity tones to rich and bold flavors, our range of tastes will take you on a sensory journey through diverse notes and nuances.",
     stock: 10,
+    count: 1,
   },
 ];
 
