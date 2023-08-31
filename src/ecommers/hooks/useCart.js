@@ -14,7 +14,7 @@ export const useCart = () => {
   const [cartOpen, setCartOpen] = useState(false);
 
   const handleAddCart = (product) => {
-    toast.success(`"${product.name} Added"`);
+    toast.success(`"${product.name}" Added!`);
     dispatch(addCart(product));
   };
 

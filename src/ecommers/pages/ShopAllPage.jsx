@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import { useProducts } from "../hooks/useProducts";
 import { useState } from "react";
+import { useCart } from "../hooks/useCart";
+import { Toaster } from "sonner";
 
 export const ShopAllPage = () => {
   const { allProducts } = useProducts();
+  const { handleAddCart } = useCart();
   const [filter, setFilter] = useState(false);
   return (
     <>
-      <h1 className="w-full font-black font-ecommers text-5xl md:text-6xl uppercase underline pb-12 pt-16 lg:pt-48 text-center  shadow-lg ">
+      <Toaster position="top-center" closeButton expand={false} />
+      <h1 className="w-full font-black font-ecommers text-5xl md:text-6xl uppercase pb-12 pt-16 lg:pt-48 text-center shadow-md ">
         shop all
       </h1>
       <div className="w-[80%]">
@@ -144,7 +148,10 @@ export const ShopAllPage = () => {
                 </p>
               </div>
               <div className="flex items-end justify-end w-full">
-                <button className="w-full bg-black p-2 text-white text-xl rounded-md hover:bg-gray-500">
+                <button
+                  onClick={() => handleAddCart(cup)}
+                  className="w-full bg-black p-2 text-white text-xl rounded-md hover:border hover:border-black/10 hover:bg-orange-200 hover:text-black"
+                >
                   ADD TO CART
                 </button>
               </div>
@@ -179,7 +186,10 @@ export const ShopAllPage = () => {
                 </p>
               </div>
               <div className="flex items-end justify-end w-full">
-                <button className="w-full bg-black p-2 text-white text-xl rounded-md hover:bg-gray-500">
+                <button
+                  onClick={() => handleAddCart(cup)}
+                  className="w-full bg-black p-2 text-white text-xl rounded-md hover:border hover:border-black/10 hover:bg-orange-200 hover:text-black"
+                >
                   ADD TO CART
                 </button>
               </div>

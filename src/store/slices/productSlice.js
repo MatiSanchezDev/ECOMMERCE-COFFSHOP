@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const product = [
   {
-    id: "1",
+    id: "11",
     name: "Coffee Arubas Cup",
     price: 1500,
     img: "/product/cup1.png",
@@ -13,7 +13,7 @@ const product = [
     count: 1,
   },
   {
-    id: "2",
+    id: "22",
     name: "Coffee Arabica Gurman Cup",
     price: 2200,
     img: "/product/cup2.png",
@@ -24,7 +24,7 @@ const product = [
     count: 1,
   },
   {
-    id: "3",
+    id: "33",
     name: "Coffee Andatti Cup",
     price: 1100,
     img: "/product/cup3.png",
@@ -35,7 +35,7 @@ const product = [
     count: 1,
   },
   {
-    id: "4",
+    id: "44",
     name: "Coffee Yola Cup",
     price: 1900,
     img: "/product/cup4.png",
@@ -46,7 +46,7 @@ const product = [
     count: 1,
   },
   {
-    id: "5",
+    id: "55",
     name: "Coffee Jaime Oliver Cup",
     price: 1600,
     img: "/product/cup5.png",
@@ -57,7 +57,7 @@ const product = [
     count: 1,
   },
   {
-    id: "6",
+    id: "66",
     name: "Coffee Coff Shop Cup",
     price: 900,
     img: "/product/cup6.png",
@@ -68,7 +68,7 @@ const product = [
     count: 1,
   },
   {
-    id: "7",
+    id: "77",
     name: "Coffee Arubas Caramel Cup",
     price: 1500,
     img: "/product/cup9.png",

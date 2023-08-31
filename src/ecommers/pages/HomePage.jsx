@@ -1,8 +1,10 @@
-import { CardHome } from "../components/CardHome";
-import { Categories } from "../components/Categories";
-import { HomeSlider } from "../components/HomeSlider";
-import { Newsletter } from "../components/Newsletter";
-import { Testimonial } from "../components/Testimonial";
+import {
+  CardHome,
+  Categories,
+  HomeSlider,
+  Newsletter,
+  Testimonial,
+} from "../components/";
 
 export const HomePage = () => {
   return (

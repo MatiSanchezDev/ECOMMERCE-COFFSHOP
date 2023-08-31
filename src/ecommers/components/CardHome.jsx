@@ -8,6 +8,7 @@ export const CardHome = () => {
   const { handleAddCart } = useCart();
   return (
     <>
+      <Toaster position="top-center" closeButton expand={false} />
       <h2 className="text-center text-5xl md:text-6xl pt-24 font-black">
         TRENDING
       </h2>
@@ -38,7 +39,6 @@ export const CardHome = () => {
               </p>
             </div>
             <div className="flex items-end justify-end w-full">
-              <Toaster position="top-center" expand={false} />
               <button
                 onClick={() => {
                   handleAddCart(cup);

@@ -18,20 +18,17 @@ export const Categories = () => {
                 className="w-full object-cover h-full object-center block opacity-40 absolute inset-0"
                 src="/wallpaper/cat1.jpg"
               />
-              <Link
-                to={"/shop-all"}
-                className="text-center relative z-0 w-full"
-              >
-                <h2 className="text-4xl sm:text-5xl text-gray-900 font-black font-ecommers title-font mb-2 underline">
+              <div to={"/shop-all"} className="text-center relative z-0 w-full">
+                <h2 className="text-4xl sm:text-5xl text-gray-900 font-black font-ecommers title-font mb-2">
                   ALL SHOP
                 </h2>
-              </Link>
+              </div>
             </Link>
             <div className="flex flex-wrap -mx-2">
               <div className="px-2 w-1/2">
                 <Link
                   to={"/shop-cups"}
-                  className="flex flex-wrap w-full bg-gray-100 sm:py-24 py-16 sm:px-10 px-6 relative hover:bg-orange-200 cursor-pointer underline text-black"
+                  className="flex flex-wrap w-full bg-gray-100 sm:py-24 py-16 sm:px-10 px-6 relative hover:bg-orange-200 cursor-pointer text-black"
                 >
                   <img
                     alt="gallery"
@@ -48,7 +45,7 @@ export const Categories = () => {
               <div className="px-2 w-1/2">
                 <Link
                   to={"/shop-packs"}
-                  className="flex flex-wrap w-full bg-gray-100 sm:py-24 py-16 sm:px-10 px-6 relative hover:bg-orange-200 cursor-pointer underline text-black"
+                  className="flex flex-wrap w-full bg-gray-100 sm:py-24 py-16 sm:px-10 px-6 relative hover:bg-orange-200 cursor-pointer text-black"
                 >
                   <img
                     alt="gallery"

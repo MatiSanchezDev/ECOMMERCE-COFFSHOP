@@ -16,7 +16,9 @@ export const cartSlice = createSlice({
       if (findProduct === undefined) {
         state.push(payload);
       } else {
-        findProduct.count++;
+        if (findProduct.count < findProduct.stock) {
+          findProduct.count++;
+        }
       }
     },
     delCart: (state, { payload }) => {

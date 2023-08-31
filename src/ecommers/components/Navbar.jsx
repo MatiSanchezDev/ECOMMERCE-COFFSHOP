@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
+import { addCart } from "../helpers/addCart";
+import { countCart } from "../helpers/countCart";
 
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -61,7 +63,7 @@ export const Navbar = () => {
             </div>
             <Link
               to={"/"}
-              className="hidden sm:flex text-2xl sm:text-5xl items-center font-bold cursor-pointer hover:animate-pulse hover:animate-infinite text-orange-400"
+              className="hidden sm:flex text-2xl sm:text-5xl items-center font-bold cursor-pointer hover:animate-pulse hover:animate-infinite text-orange-400 hover:text-black"
             >
               Coff Shop
             </Link>
@@ -100,7 +102,7 @@ export const Navbar = () => {
                 className="relative group hover:cursor-pointer"
               >
                 <span className="absolute right-[-15%] text-[10px] font-bold text-white bg-black rounded-full w-auto h-4 overflow-hidden text-center flex justify-center items-center p-[6px] cursor-pointer group-hover:bg-orange-600">
-                  {cart ? cart.length : 0}
+                  {countCart(cart)}
                 </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -133,8 +135,8 @@ export const Navbar = () => {
       <div
         className={
           nav
-            ? "fixed w-96 h-screen bg-orange-300 z-30 top-0 left-0 flex justify-start flex-col p-5 ease-in-out duration-500"
-            : "fixed w-96 h-screen bg-orange-300 z-30 top-0 left-[-110%] flex justify-start flex-col p-5 ease-in-out duration-500"
+            ? "fixed w-96 h-screen bg-white z-30 top-0 left-0 flex justify-start flex-col p-5 ease-in-out duration-500"
+            : "fixed w-96 h-screen bg-white z-30 top-0 left-[-110%] flex justify-start flex-col p-5 ease-in-out duration-500"
         }
       >
         <svg
@@ -154,7 +156,7 @@ export const Navbar = () => {
         </svg>
         <Link
           to={"/"}
-          className="text-5xl font-bold cursor-pointer text-start mt-16 mx-5 m-2"
+          className="text-5xl font-bold cursor-pointer text-start mt-16 mx-5 m-2 hover:text-orange-500 "
         >
           Coff Shop
         </Link>
@@ -162,13 +164,13 @@ export const Navbar = () => {
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
             <Link
               to={"/"}
-              className="flex items-center gap-2 p-1 hover:underline cursor-pointer"
+              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer"
             >
               <img className="w-10 mr-2" src="/icons/icon4.png" alt="" /> Home
             </Link>
           </li>
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
-            <Link className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
+            <Link className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer">
               <img className="w-10 mr-2" src="/icons/avatar.png" alt="" />
               Login
             </Link>
@@ -176,7 +178,7 @@ export const Navbar = () => {
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
             <Link
               to={"/shop-all"}
-              className="flex items-center gap-2 p-1 hover:underline cursor-pointer"
+              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer"
             >
               <img className="w-10 mr-2" src="/icons/icon1.png" alt="" /> Shop
               All
@@ -185,7 +187,7 @@ export const Navbar = () => {
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
             <Link
               to={"/shop-packs"}
-              className="flex items-center gap-2 p-1 hover:underline cursor-pointer"
+              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer"
             >
               <img className="w-10 mr-2" src="/icons/icon5.png" alt="" /> Coffee
               Packs
@@ -194,7 +196,7 @@ export const Navbar = () => {
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
             <Link
               to={"/shop-cups"}
-              className="flex items-center gap-2 p-1 hover:underline cursor-pointer"
+              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer"
             >
               <img className="w-10 mr-2" src="/icons/icon3.png" alt="" /> Coffee
               Cups
@@ -373,7 +375,7 @@ export const Navbar = () => {
         </div>
         <div className="text-center mb-3 flex justify-between items-center px-5 pt-5">
           <span className="uppercase text-3xl">Total:</span>
-          <span className="text-4xl">$12000</span>
+          <span className="text-4xl">${addCart(cart)}</span>
         </div>
         <button className="text-white text-lg font-bold w-full bg-black h-12 rounded-lg shadow-[0_2px_9px_1px_rgba(0,0,0,0.3)] hover:border hover:border-black hover:bg-orange-200 hover:text-black">
           CHETKOUT
