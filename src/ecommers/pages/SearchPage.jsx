@@ -1,17 +1,64 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
-import { useCart } from "../hooks/useCart";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Toaster } from "sonner";
+import { useCart } from "../hooks/useCart";
 
-export const ShopAllPage = () => {
-  const { allProducts } = useProducts();
+export const SearchPage = () => {
+  const params = useParams();
   const { handleAddCart } = useCart();
+  const [filterCup, setFilterCup] = useState([]);
+  const [filterPack, setFilterPack] = useState([]);
+  const { packProduc, cupProduct } = useProducts();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const findPack = packProduc.filter((pack) =>
+      pack.name
+        .toString()
+        .toLowerCase()
+        .includes(params.name.toString().toLowerCase())
+    );
+    if (findPack) {
+      setFilterPack(findPack);
+    }
+    const findCoffee = cupProduct.filter((coffee) =>
+      coffee.name
+        .toString()
+        .toLocaleLowerCase()
+        .includes(params.name.toString().toLowerCase())
+    );
+    if (findCoffee !== false) {
+      setFilterCup(findCoffee);
+    }
+  }, [params.name]);
+
+  if (filterCup.length === 0 && filterPack.length === 0)
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+        <h2 className="text-3xl lg:text-5xl uppercase animate-fade">
+          product not found
+        </h2>
+        <span
+          className="uppercase underline cursor-pointer text-xl hover:text-orange-500 mt-2 animate-fade"
+          onClick={() => {
+            if (window.history.state && window.history.state.idx > 0) {
+              navigate(-1);
+            } else {
+              navigate("/", { replace: true });
+            }
+          }}
+        >
+          {"< Go Back"}
+        </span>
+      </div>
+    );
+
   return (
     <>
       <Toaster position="top-center" closeButton expand={false} />
       <h1 className="w-full font-black font-ecommers text-5xl md:text-6xl uppercase pb-12 pt-16 lg:pt-48 text-center border-b-2 animate-fade">
-        shop all
+        find product
       </h1>
       <div className="w-[80%] text-center my-6">
         <span
@@ -28,7 +75,7 @@ export const ShopAllPage = () => {
         </span>
         <div className="w-full">{/* filtros */}</div>
         <div className="flex flex-row flex-wrap justify-center items-start content-center gap-4 my-4">
-          {allProducts[0]?.map((cup) => (
+          {filterCup?.map((cup) => (
             <div
               key={cup.id}
               className="group relative self-auto w-[303px] h-[550px] shadow-gray-300 shadow-[0_2px_9px_1px_rgba(0,0,0,0.3)] rounded-2xl mt-2 flex flex-col justify-center  items-start content-center p-5 overflow-hidden animate-fade"
@@ -66,7 +113,7 @@ export const ShopAllPage = () => {
               </div>
             </div>
           ))}
-          {allProducts[1]?.map((cup) => (
+          {filterPack?.map((cup) => (
             <div
               key={cup.id}
               className="group relative self-auto w-[303px] h-[550px] shadow-gray-300 shadow-[0_2px_9px_1px_rgba(0,0,0,0.3)] rounded-2xl mt-2 flex flex-col justify-center  items-start content-center p-5 overflow-hidden"

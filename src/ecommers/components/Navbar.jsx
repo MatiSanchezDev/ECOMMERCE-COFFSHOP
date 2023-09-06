@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 import { addCart } from "../helpers/addCart";
 import { countCart } from "../helpers/countCart";
+import { toast } from "sonner";
 
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [search, setSearch] = useState(false);
+  const navigate = useNavigate();
   const {
     cart,
     handleDelCart,
@@ -15,6 +17,18 @@ export const Navbar = () => {
     cartOpen,
     setCartOpen,
   } = useCart();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const search = e.currentTarget.search.value.trim().toLowerCase();
+
+    if (search.length <= 1) {
+      toast.success("Debe introducir mas de una letra para la busqueda");
+    } else if (search.length > 1) {
+      navigate(`/search/${search}`);
+    }
+    e.currentTarget.reset();
+  };
 
   return (
     <main className="flex flex-col justify-center items-center">
@@ -66,6 +80,9 @@ export const Navbar = () => {
               className="hidden sm:flex text-2xl sm:text-5xl items-center font-bold cursor-pointer hover:animate-pulse hover:animate-infinite text-orange-400 hover:text-black"
             >
               Coff Shop
+            </Link>
+            <Link to={"/"} className="sm:hidden">
+              <img className="w-9 cursor-pointer" src="icon3.png" alt="" />
             </Link>
             <div className="flex gap-1 md:gap-3">
               <svg
@@ -156,6 +173,7 @@ export const Navbar = () => {
         </svg>
         <Link
           to={"/"}
+          onClick={() => setNav(false)}
           className="text-5xl font-bold cursor-pointer text-start mt-16 mx-5 m-2 hover:text-orange-500 "
         >
           Coff Shop
@@ -164,13 +182,17 @@ export const Navbar = () => {
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
             <Link
               to={"/"}
-              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer"
+              onClick={() => setNav(false)}
+              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer hover:translate-x-3 duration-100"
             >
               <img className="w-10 mr-2" src="/icons/icon4.png" alt="" /> Home
             </Link>
           </li>
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
-            <Link className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer">
+            <Link
+              onClick={() => setNav(false)}
+              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer hover:translate-x-3 duration-100"
+            >
               <img className="w-10 mr-2" src="/icons/avatar.png" alt="" />
               Login
             </Link>
@@ -178,7 +200,8 @@ export const Navbar = () => {
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
             <Link
               to={"/shop-all"}
-              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer"
+              onClick={() => setNav(false)}
+              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer hover:translate-x-3 duration-100"
             >
               <img className="w-10 mr-2" src="/icons/icon1.png" alt="" /> Shop
               All
@@ -187,7 +210,8 @@ export const Navbar = () => {
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
             <Link
               to={"/shop-packs"}
-              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer"
+              onClick={() => setNav(false)}
+              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer hover:translate-x-3 duration-100"
             >
               <img className="w-10 mr-2" src="/icons/icon5.png" alt="" /> Coffee
               Packs
@@ -196,7 +220,8 @@ export const Navbar = () => {
           <li className="flex items-center gap-2 p-1 hover:underline cursor-pointer">
             <Link
               to={"/shop-cups"}
-              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer"
+              onClick={() => setNav(false)}
+              className="flex items-center gap-2 p-1 hover:underline hover:text-orange-500 cursor-pointer hover:translate-x-3 duration-100"
             >
               <img className="w-10 mr-2" src="/icons/icon3.png" alt="" /> Coffee
               Cups
@@ -218,21 +243,22 @@ export const Navbar = () => {
       <div
         className={
           !search
-            ? "fixed w-full z-30 top-[-100%] left-0 h-28 bg-orange-400 p-4 flex items-center justify-center gap-4 ease-in-out duration-500"
-            : "fixed w-full z-30 top-0 left-0 h-28  bg-orange-400 p-4 flex items-center justify-center gap-4 ease-in-out duration-500"
+            ? "fixed w-full z-30 top-[-100%] left-0 h-28 bg-white p-4 flex items-center justify-center gap-4 ease-in-out duration-500"
+            : "fixed w-full z-30 top-0 left-0 h-28  bg-white p-4 flex items-center justify-center gap-4 ease-in-out duration-500"
         }
       >
-        <form className="w-[600px] p-3x">
+        <form onSubmit={handleSearch} className="w-[600px] p-3x">
           <label className="relative flex gap-2 w-full">
             <input
-              className="placeholder:italic text-black rounded-md placeholder:text-slate-400 block bg-white w-full border border-slate-300 py-2 pl-2 pr-3 shadow-sm focus:outline-none focus:ring-orange-600 focus:ring-1 sm:text-sm"
+              className="placeholder:italic text-black rounded-md uppercase placeholder:text-slate-400 block bg-white w-full border border-slate-300 py-2 pl-2 pr-3 shadow-sm focus:outline-none focus:ring-orange-600 focus:ring-1 sm:text-sm"
               placeholder="Search product..."
               type="text"
               name="search"
             />
             <button
               type="submit"
-              className="w-24 rounded-md font-bold text-white bg-orange-600 focus:border-black focus:ring-black hover:bg-orange-500 hover:border-none"
+              onClick={() => setSearch(false)}
+              className="w-24 rounded-md font-bold text-white bg-black focus:border-black focus:ring-black hover:bg-orange-500 hover:border-none"
             >
               Search
             </button>
@@ -272,7 +298,7 @@ export const Navbar = () => {
       <div
         className={
           cartOpen
-            ? "fixed w-96 h-screen bg-white z-30 top-0 right-0 flex justify-start flex-col p-4 shadow-2xl"
+            ? "fixed w-96 h-screen bg-white z-30 top-0 right-0 flex justify-start flex-col p-4 shadow-2xl animate-fade animate-duration-[400ms]"
             : "hidden"
         }
       >
@@ -298,7 +324,7 @@ export const Navbar = () => {
           <div
             className={
               cart.length === 0
-                ? "w-full h-full flex justify-center items-center bg-orange-200/40 text-3xl uppercase"
+                ? "w-full h-full flex justify-center items-center bg-gray-200/40 text-3xl uppercase"
                 : "hidden"
             }
           >
@@ -307,7 +333,7 @@ export const Navbar = () => {
           {cart?.map((cart) => (
             <div
               key={cart.id}
-              className="relative w-80 h-28 m-2 ml-3 bg-orange-200/30 rounded-md flex flex-row shadow-[0_2px_6px_1px_rgba(0,0,0,0.3)] border hover:border-black/30 "
+              className="relative w-80 h-28 m-2 ml-3 bg-orange-200/30 rounded-md flex flex-row shadow-[0_2px_6px_1px_rgba(0,0,0,0.3)] border hover:border-black/30 animate-fade-right"
             >
               <span className="absolute top-11 left-3">
                 <svg
@@ -374,12 +400,16 @@ export const Navbar = () => {
           ))}
         </div>
         <div className="text-center mb-3 flex justify-between items-center px-5 pt-5">
-          <span className="uppercase text-3xl">Total:</span>
+          <span className="uppercase text-3xl">SubTotal:</span>
           <span className="text-4xl">${addCart(cart)}</span>
         </div>
-        <button className="text-white text-lg font-bold w-full bg-black h-12 rounded-lg shadow-[0_2px_9px_1px_rgba(0,0,0,0.3)] hover:border hover:border-black hover:bg-orange-200 hover:text-black">
+        <Link
+          onClick={() => setCartOpen(false)}
+          className="text-white text-lg font-bold w-full bg-black h-12 rounded-lg shadow-[0_2px_9px_1px_rgba(0,0,0,0.3)] hover:border hover:border-black hover:bg-orange-200 hover:text-black flex items-center justify-center"
+          to={"total-cart"}
+        >
           CHETKOUT
-        </button>
+        </Link>
       </div>
     </main>
   );

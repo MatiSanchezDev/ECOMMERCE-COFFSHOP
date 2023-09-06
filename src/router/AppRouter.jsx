@@ -4,6 +4,8 @@ import { ShopAllPage } from "../ecommers/pages/ShopAllPage";
 import { ShopCupPage } from "../ecommers/pages/ShopCupPage";
 import { ShopPackPage } from "../ecommers/pages/ShopPackPage";
 import { OnlyProductPage } from "../ecommers/pages/OnlyProductPage";
+import { CartPage } from "../ecommers/pages/CartPage";
+import { SearchPage } from "../ecommers/pages/SearchPage";
 
 export const AppRouter = () => {
   return (
@@ -13,6 +15,8 @@ export const AppRouter = () => {
       <Route path="/shop-cups" element={<ShopCupPage />} />
       <Route path="/shop-packs" element={<ShopPackPage />} />
       <Route path="/product/:name" element={<OnlyProductPage />} />
+      <Route path="/total-cart" element={<CartPage />} />
+      <Route path="/search/:name" element={<SearchPage />} />
     </Routes>
   );
 };

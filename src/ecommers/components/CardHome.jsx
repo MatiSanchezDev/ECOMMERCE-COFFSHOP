@@ -9,14 +9,14 @@ export const CardHome = () => {
   return (
     <>
       <Toaster position="top-center" closeButton expand={false} />
-      <h2 className="text-center text-5xl md:text-6xl pt-24 font-black">
+      <h2 className="text-center text-5xl md:text-6xl pt-9 lg:pt-20 font-black">
         TRENDING
       </h2>
       <div className="flex flex-row flex-wrap justify-center items-start content-center gap-4 my-6">
         {cupProduct?.map((cup) => (
           <div
             key={cup.id}
-            className="group relative self-auto w-[303px] h-[550px] shadow-gray-300 shadow-[0_2px_9px_1px_rgba(0,0,0,0.3)] rounded-2xl mt-2 flex flex-col justify-center  items-start content-center p-5 overflow-hidden"
+            className="group relative self-auto w-[303px] h-[550px] shadow-gray-300 shadow-[0_2px_9px_1px_rgba(0,0,0,0.3)] rounded-2xl mt-2 flex flex-col justify-center  items-start content-center p-5 overflow-hidden animate-fade"
           >
             <div
               className={`${cup.bg} w-full h-80 absolute z-0 top-[-100%] group-hover:top-0 left-0 rounded-md ease-in-out duration-300`}
